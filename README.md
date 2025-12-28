@@ -1,2 +1,10 @@
-# scholars-preprimary
-Official website for Scholars’ Pre-Primary English Medium School — a static, multilingual preschool website built with HTML, CSS, and JavaScript, featuring program details, enquiry form, and contact information.
+# Scholars Preprimary School Website
+
+Official static website for Scholars’ Preprimary English Medium School.
+
+Built with:
+- HTML
+- CSS
+- JavaScript
+
+Hosted on GitHub Pages.
