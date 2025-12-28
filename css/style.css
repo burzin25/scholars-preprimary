@@ -1,0 +1,460 @@
+/*
+  Scholars' Preschool Website
+  Main Stylesheet (Clean + Maintainable)
+*/
+
+/* ===== Variables ===== */
+:root{
+  --bg-cream:#f6f2dc;
+  --paper:#ffffff;
+  --ink:#1b1b1b;
+  --muted:#5a5a5a;
+
+  --blue:#71a9d6;
+  --pink:#f3a6b5;
+  --coral:#ef7e7a;
+
+  --brand:#2b6fb0;
+
+  --shadow:0 12px 30px rgba(0,0,0,.12);
+  --border:rgba(0,0,0,.10);
+  --radius:10px;
+}
+
+/* ===== Base ===== */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Segoe UI", Roboto, Arial, sans-serif;
+  color:var(--ink);
+  min-height:100vh;
+
+  /* Geometric background */
+  background:
+    linear-gradient(120deg, rgba(65,160,220,.55) 0 24%, transparent 24% 100%),
+    linear-gradient(45deg, rgba(255,214,90,.55) 0 18%, transparent 18% 100%),
+    linear-gradient(200deg, rgba(245,120,120,.55) 0 22%, transparent 22% 100%),
+    linear-gradient(330deg, rgba(120,210,160,.55) 0 20%, transparent 20% 100%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.18) 0 26px, rgba(255,255,255,0) 26px 52px),
+    var(--bg-cream);
+}
+
+/* ===== Layout ===== */
+.wrap{
+  max-width:980px;
+  margin:0 auto;
+  padding:18px 14px 40px;
+}
+
+.paper{
+  background:var(--paper);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden; /* important */
+}
+
+/* ===== Header ===== */
+.header{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  padding:10px 18px 6px;
+  gap:10px;
+}
+
+/* Logo row (icon9 left, icon10 right) */
+.brandLogoRow{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+}
+
+.brandLogo{
+  width:auto;
+  display:block;
+}
+
+/* Round logo */
+.brandLogo.secondary{
+  height:190px;   /* controlled, consistent */
+}
+
+/* Text logo */
+.brandLogo:not(.secondary){
+  height:100px;
+}
+
+/* Nav below logos */
+.nav{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  padding:8px 0 6px;
+}
+
+.nav a{
+  font-size:13px;
+  color:var(--brand);
+  text-decoration:none;
+  padding:6px 10px;
+  border-radius:999px;
+}
+
+.nav a:hover{background:rgba(43,111,176,.08)}
+.nav a.active{
+  background:rgba(43,111,176,.12);
+  font-weight:700;
+}
+
+/* ===== Hero ===== */
+.hero{
+  padding:0 18px 14px;
+  margin-top:8px;
+}
+
+.heroFrame{
+  position:relative;
+  border:10px solid rgba(255,255,255,.95);
+  border-radius:6px;
+  overflow:hidden;
+  background:#e9eef3;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+.heroFrame img{
+  width:100%;
+  height:420px;
+  object-fit:cover;
+  display:block;
+}
+
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.65);
+  background:rgba(255,255,255,.35);
+  display:grid;
+  place-items:center;
+  color:#ffffff;
+  font-size:18px;
+  user-select:none;
+  cursor:pointer;
+}
+
+.arrow.left{left:12px}
+.arrow.right{right:12px}
+.arrow:hover{background:rgba(255,255,255,.5)}
+
+/* ===== Sections container ===== */
+.tiles{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  padding:10px 18px 18px;
+}
+
+/* ===== Tile base ===== */
+.tile{
+  border-radius:8px;
+  overflow:hidden;
+  border:1px solid rgba(0,0,0,.08);
+  display:flex;
+  flex-direction:column;
+}
+
+.tileHeader{
+  padding:12px 12px 10px;
+  color:#fff;
+  font-weight:800;
+  font-size:16px;
+}
+
+.tileBody{
+  padding:12px;
+  line-height:1.6;
+  flex:1;
+}
+
+.tileFooter{
+  padding:10px 12px;
+  background:rgba(255,255,255,.85);
+  display:flex;
+  justify-content:flex-end;
+}
+
+.tileFooter a{
+  font-size:12px;
+  text-decoration:none;
+  color:#c23b3b;
+  font-weight:700;
+}
+.tileFooter a:hover{text-decoration:underline}
+
+/* Tile themes */
+.t-blue{
+  background:linear-gradient(180deg, var(--blue), #5b93c2);
+}
+.t-blue .tileBody{ color:#fff; }
+
+.t-pink{
+  background:linear-gradient(180deg, var(--pink), #e68c9e);
+}
+.t-coral{
+  background:linear-gradient(180deg, var(--coral), #e56b67);
+}
+.t-coral .tileBody{ color:#fff; }
+
+/* ===== About split ===== */
+.aboutSplit{
+  display:grid;
+  grid-template-columns:1fr 1.25fr;
+  gap:18px;
+  align-items:center;
+}
+
+.aboutImg img{
+  width:100%;
+  max-height:300px;
+  object-fit:cover;
+  border-radius:10px;
+  box-shadow:0 10px 20px rgba(0,0,0,.12);
+  display:block;
+}
+
+.aboutText p{margin:0 0 10px}
+
+/* ===== Programs ===== */
+#programs .tileBody{ color:#1b1b1b; } /* override: programs uses white cards */
+
+.programGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.programCard{
+  border:1px solid rgba(0,0,0,.10);
+  border-radius:12px;
+  background:rgba(255,255,255,.88);
+  overflow:hidden;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+
+.programCard > summary{
+  list-style:none;
+  cursor:pointer;
+}
+.programCard > summary::-webkit-details-marker{display:none}
+
+.programSummary{
+  display:flex;
+  flex-direction:column;
+}
+
+.programThumb{
+  width:100%;
+  aspect-ratio:1 / 1;
+  overflow:hidden;
+  background:#eef2f6;
+}
+
+.programThumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.programTitle{
+  padding:10px 12px;
+  font-weight:800;
+  color:var(--brand);
+  font-size:16px;
+  text-align:center;
+  background:rgba(255,255,255,.75);
+  border-top:1px solid rgba(0,0,0,.06);
+}
+
+.programContent{
+  padding:12px 14px 14px;
+  color:#2b2b2b;
+  background:rgba(255,255,255,.95);
+  border-top:1px solid rgba(0,0,0,.08);
+}
+
+.programContent h3{
+  margin:0 0 8px;
+  color:var(--brand);
+  font-size:18px;
+}
+
+.programContent p{margin:0 0 10px}
+.programContent ul{margin:0; padding-left:18px; line-height:1.55}
+
+.programCard[open]{
+  box-shadow:0 12px 28px rgba(0,0,0,.12);
+  transform:translateY(-2px);
+}
+
+/* ===== Contact ===== */
+.contactSplit{
+  display:grid;
+  grid-template-columns:1.25fr .9fr; /* map narrower */
+  gap:18px;
+  align-items:center;
+}
+
+.contactInfo h3{
+  margin:0 0 10px;
+  font-size:20px;
+  font-weight:800;
+}
+
+.contactInfo p{margin:0 0 12px}
+
+.contactMap{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.contactMap iframe{
+  width:100%;
+  min-height:240px;
+  border:0;
+  border-radius:10px;
+  display:block;
+}
+
+/* ===== Enquiry Form (inside contact tile) ===== */
+.enquiryBox{
+  margin:14px 12px 12px;
+  padding:18px;
+  border-radius:14px;
+  background:#ffffff;
+  border:1px solid rgba(0,0,0,.12);
+  box-shadow:0 10px 25px rgba(0,0,0,.10);
+}
+
+.enquiryTitle{
+  margin:0 0 4px;
+  color:#000;
+  font-size:18px;
+  font-weight:800;
+}
+
+.enquirySubtitle{
+  margin:0 0 12px;
+  color:#000;
+  font-size:13px;
+}
+
+.enquiryForm{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* Enquiry form: make dropdown/input text larger */
+.formRow input,
+.formRow select,
+.formRow textarea{
+  font-size:16px;      /* was 14px */
+  line-height:1.35;
+  padding:12px 12px;   /* a bit more height */
+}
+
+/* Dropdown option text (some browsers use this) */
+.formRow select option{
+  font-size:16px;
+}
+
+/* Optional: make placeholder text readable */
+.formRow input::placeholder,
+.formRow textarea::placeholder{
+  font-size:16px;
+}
+
+.formGrid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px 12px;
+}
+
+.formRow{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.formRow label{
+  font-size:12px;
+  font-weight:700;
+  color:#000;
+}
+
+.formRow input,
+.formRow select,
+.formRow textarea{
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:10px;
+  padding:10px 10px;
+  font-size:14px;
+  outline:none;
+}
+
+.formRow textarea{resize:vertical}
+
+.btnSubmit{
+  margin-top:4px;
+  border:none;
+  border-radius:12px;
+  padding:10px 14px;
+  font-size:14px;
+  font-weight:800;
+  cursor:pointer;
+  background:#ffffff;
+  color:#c23b3b;
+  border:1px solid rgba(0,0,0,.10);
+}
+
+.btnSubmit:hover{background:#fff}
+
+/* ===== Footer ===== */
+.footer{
+  padding:16px 20px;
+  font-size:12px;
+  color:rgba(0,0,0,.55);
+  display:flex;
+  justify-content:flex-end;
+  width:100%;
+}
+
+/* ===== Responsive ===== */
+@media (max-width:980px){
+  .heroFrame img{height:360px}
+  .programGrid{grid-template-columns:repeat(2,1fr)}
+  .aboutSplit{grid-template-columns:1fr}
+}
+
+@media (max-width:760px){
+  .contactSplit{grid-template-columns:1fr}
+  .formGrid{grid-template-columns:1fr}
+  .contactMap iframe{min-height:220px}
+}
+
+@media (max-width:560px){
+  .heroFrame img{height:280px}
+  .programGrid{grid-template-columns:1fr}
+  .brandLogo.secondary{height:70px}
+  .brandLogo:not(.secondary){height:48px}
+}
