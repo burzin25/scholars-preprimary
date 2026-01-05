@@ -1,3 +1,5 @@
+/* style.css (modified) */
+
 /*
   Scholars' Preschool Website
   Main Stylesheet (Clean + Maintainable)
@@ -22,15 +24,14 @@
 }
 
 /* ===== Base ===== */
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+*, *::before, *::after{ box-sizing:border-box }
+html{ scroll-behavior:smooth }
 body{
   margin:0;
   font-family:"Segoe UI", Roboto, Arial, sans-serif;
   color:var(--ink);
   min-height:100vh;
 
-  /* Geometric background */
   background:
     linear-gradient(120deg, rgba(65,160,220,.55) 0 24%, transparent 24% 100%),
     linear-gradient(45deg, rgba(255,214,90,.55) 0 18%, transparent 18% 100%),
@@ -42,16 +43,10 @@ body{
 
 /* ===== Layout ===== */
 .wrap{
-  max-width:980px;
-  margin:0 auto;
-  padding:18px 14px 40px;
-}
-
-.paper{
-  background:var(--paper);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  overflow:hidden; /* important */
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 18px 14px 40px;
+  width: 100%;
 }
 
 /* ===== Header ===== */
@@ -64,7 +59,6 @@ body{
   gap:10px;
 }
 
-/* Logo row (icon9 left, icon10 right) */
 .brandLogoRow{
   display:flex;
   align-items:center;
@@ -72,22 +66,10 @@ body{
   gap:14px;
 }
 
-.brandLogo{
-  width:auto;
-  display:block;
-}
+.brandLogo{ width:auto; display:block; }
+.brandLogo.secondary{ height:190px; }
+.brandLogo:not(.secondary){ height:100px; }
 
-/* Round logo */
-.brandLogo.secondary{
-  height:190px;   /* controlled, consistent */
-}
-
-/* Text logo */
-.brandLogo:not(.secondary){
-  height:100px;
-}
-
-/* Nav below logos */
 .nav{
   display:flex;
   gap:10px;
@@ -105,17 +87,14 @@ body{
   border-radius:999px;
 }
 
-.nav a:hover{background:rgba(43,111,176,.08)}
+.nav a:hover{ background:rgba(43,111,176,.08) }
 .nav a.active{
   background:rgba(43,111,176,.12);
   font-weight:700;
 }
 
 /* ===== Hero ===== */
-.hero{
-  padding:0 18px 14px;
-  margin-top:8px;
-}
+.hero{ padding:0 18px 14px; margin-top:8px; }
 
 .heroFrame{
   position:relative;
@@ -150,9 +129,9 @@ body{
   cursor:pointer;
 }
 
-.arrow.left{left:12px}
-.arrow.right{right:12px}
-.arrow:hover{background:rgba(255,255,255,.5)}
+.arrow.left{ left:12px }
+.arrow.right{ right:12px }
+.arrow:hover{ background:rgba(255,255,255,.5) }
 
 /* ===== Sections container ===== */
 .tiles{
@@ -171,6 +150,8 @@ body{
   flex-direction:column;
 }
 
+.tile.tileWide{ width:100%; max-width:100%; }
+
 .tileHeader{
   padding:12px 12px 10px;
   color:#fff;
@@ -182,6 +163,8 @@ body{
   padding:12px;
   line-height:1.6;
   flex:1;
+  width:100%;
+  min-width:0;
 }
 
 .tileFooter{
@@ -197,20 +180,15 @@ body{
   color:#c23b3b;
   font-weight:700;
 }
-.tileFooter a:hover{text-decoration:underline}
+.tileFooter a:hover{ text-decoration:underline }
 
 /* Tile themes */
-.t-blue{
-  background:linear-gradient(180deg, var(--blue), #5b93c2);
-}
+.t-blue{ background:linear-gradient(180deg, var(--blue), #5b93c2); }
 .t-blue .tileBody{ color:#fff; }
 
-.t-pink{
-  background:linear-gradient(180deg, var(--pink), #e68c9e);
-}
-.t-coral{
-  background:linear-gradient(180deg, var(--coral), #e56b67);
-}
+.t-pink{ background:linear-gradient(180deg, var(--pink), #e68c9e); }
+
+.t-coral{ background:linear-gradient(180deg, var(--coral), #e56b67); }
 .t-coral .tileBody{ color:#fff; }
 
 /* ===== About split ===== */
@@ -223,22 +201,31 @@ body{
 
 .aboutImg img{
   width:100%;
-  max-height:300px;
+  max-height:500px;
   object-fit:cover;
   border-radius:10px;
   box-shadow:0 10px 20px rgba(0,0,0,.12);
   display:block;
 }
 
-.aboutText p{margin:0 0 10px}
+.aboutText p{ margin:0 0 10px }
 
 /* ===== Programs ===== */
-#programs .tileBody{ color:#1b1b1b; } /* override: programs uses white cards */
+#programs .tileBody{ color:#1b1b1b; }
 
 .programGrid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
+  grid-template-columns:repeat(4, minmax(0, 1fr));
+  gap:12px;
+  width:100%;
+}
+
+@media (max-width: 980px){
+  .programGrid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px){
+  .programGrid{ grid-template-columns:1fr; }
 }
 
 .programCard{
@@ -247,18 +234,17 @@ body{
   background:rgba(255,255,255,.88);
   overflow:hidden;
   transition:transform .15s ease, box-shadow .15s ease;
+  display:flex;
+  flex-direction:column;
 }
 
 .programCard > summary{
   list-style:none;
   cursor:pointer;
 }
-.programCard > summary::-webkit-details-marker{display:none}
+.programCard > summary::-webkit-details-marker{ display:none }
 
-.programSummary{
-  display:flex;
-  flex-direction:column;
-}
+.programSummary{ display:flex; flex-direction:column; }
 
 .programThumb{
   width:100%;
@@ -278,9 +264,9 @@ body{
   padding:10px 12px;
   font-weight:800;
   color:var(--brand);
-  font-size:16px;
+  font-size:15px;
   text-align:center;
-  background:rgba(255,255,255,.75);
+  background:rgba(255,255,255,0.75);
   border-top:1px solid rgba(0,0,0,.06);
 }
 
@@ -297,65 +283,147 @@ body{
   font-size:18px;
 }
 
-.programContent p{margin:0 0 10px}
-.programContent ul{margin:0; padding-left:18px; line-height:1.55}
+.programContent p{ margin:0 0 10px }
+.programContent ul{ margin:0; padding-left:18px; line-height:1.55 }
 
 .programCard[open]{
   box-shadow:0 12px 28px rgba(0,0,0,.12);
   transform:translateY(-2px);
 }
 
-/* ===== Contact ===== */
-.contactSplit{
+/* ===== Contact + Enquiry (UPDATED to improve readability without changing class/box names) ===== */
+.contactGrid{
   display:grid;
-  grid-template-columns:1.25fr .9fr; /* map narrower */
-  gap:18px;
-  align-items:center;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:16px;
+  align-items:start;
+  width:100%;
 }
 
+@media (max-width: 760px){
+  .contactGrid{ grid-template-columns:1fr; }
+}
+
+/* IMPORTANT: Contact text should not be white on coral.
+   Keep tile header coral, but make the contactInfo area readable. */
+#contact .tileBody{ color: var(--ink); }
+
+/* contactInfo becomes a clean card (same class name kept) */
+.contactInfo{
+  background: rgba(255,255,255,.92);
+  border: 1px solid rgba(0,0,0,.10);
+  border-radius: 14px;
+  padding: 16px 16px 14px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
+}
+
+/* School name one-line on desktop; wraps on small screens */
 .contactInfo h3{
-  margin:0 0 10px;
-  font-size:20px;
+  margin: 0 0 10px;
+  font-weight: 900;
+  color: #102a43;
+  line-height: 1.15;
+
+  /* FORCE single line */
+  white-space: nowrap;
+
+  /* RESPONSIVE font scaling */
+  font-size: clamp(12px, 1.4vw, 16px);
+
+  /* NO truncation */
+  overflow: visible;
+}
+
+
+@media (max-width: 560px){
+  .contactInfo h3{
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+}
+
+/* New structured rows inside contactInfo (class names added in HTML; existing names untouched) */
+.contactMeta{
+  display:grid;
+  gap:12px;
+}
+
+.metaRow{
+  display:grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap:10px;
+  align-items:start;
+}
+
+@media (max-width: 560px){
+  .metaRow{
+    grid-template-columns: 1fr;
+    gap:6px;
+  }
+}
+
+.metaLabel{
+  font-size:12px;
   font-weight:800;
+  color: rgba(16,42,67,.75);
+  text-transform: uppercase;
+  letter-spacing:.4px;
 }
 
-.contactInfo p{margin:0 0 12px}
-
-.contactMap{
-  display:flex;
-  justify-content:center;
-  align-items:center;
+.metaValue{
+  font-size:15px;
+  color:#102a43;
+  line-height:1.55;
 }
 
+/* Phone link */
+.contactLink{
+  color: var(--brand);
+  font-weight: 900;
+  text-decoration: none;
+}
+.contactLink:hover{ text-decoration: underline; }
+
+/* Days above time */
+.timingDays{
+  font-weight: 800;
+  color: rgba(16,42,67,.85);
+}
+.timingHours{
+  font-weight: 700;
+  color: #102a43;
+}
+
+/* Map: match the card look and add shadow */
 .contactMap iframe{
   width:100%;
-  min-height:240px;
+  height:320px;
   border:0;
-  border-radius:10px;
+  border-radius:14px;
   display:block;
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
 }
 
-/* ===== Enquiry Form (inside contact tile) ===== */
+/* Make enquiry span full width beneath contact+map (unchanged) */
 .enquiryBox{
-  margin:14px 12px 12px;
+  grid-column:1 / -1;
+  margin-top:2px;
   padding:18px;
   border-radius:14px;
   background:#ffffff;
   border:1px solid rgba(0,0,0,.12);
   box-shadow:0 10px 25px rgba(0,0,0,.10);
+  width:100%;
+  color:#000;
 }
 
+/* ===== Enquiry Form ===== */
 .enquiryTitle{
-  margin:0 0 4px;
+  margin:0 0 6px;
   color:#000;
   font-size:18px;
   font-weight:800;
-}
-
-.enquirySubtitle{
-  margin:0 0 12px;
-  color:#000;
-  font-size:13px;
 }
 
 .enquiryForm{
@@ -364,30 +432,14 @@ body{
   gap:10px;
 }
 
-/* Enquiry form: make dropdown/input text larger */
-.formRow input,
-.formRow select,
-.formRow textarea{
-  font-size:16px;      /* was 14px */
-  line-height:1.35;
-  padding:12px 12px;   /* a bit more height */
-}
-
-/* Dropdown option text (some browsers use this) */
-.formRow select option{
-  font-size:16px;
-}
-
-/* Optional: make placeholder text readable */
-.formRow input::placeholder,
-.formRow textarea::placeholder{
-  font-size:16px;
-}
-
 .formGrid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(2, minmax(0, 1fr));
   gap:10px 12px;
+}
+
+@media (max-width: 760px){
+  .formGrid{ grid-template-columns:1fr; }
 }
 
 .formRow{
@@ -405,29 +457,32 @@ body{
 .formRow input,
 .formRow select,
 .formRow textarea{
+  width:100%;
   border:1px solid rgba(0,0,0,.12);
   border-radius:10px;
-  padding:10px 10px;
-  font-size:14px;
+  padding:12px 12px;
+  font-size:16px;
+  line-height:1.35;
   outline:none;
 }
 
-.formRow textarea{resize:vertical}
+.formRow textarea{ resize:vertical }
 
 .btnSubmit{
   margin-top:4px;
   border:none;
   border-radius:12px;
-  padding:10px 14px;
-  font-size:14px;
+  padding:12px 14px;
+  font-size:15px;
   font-weight:800;
   cursor:pointer;
   background:#ffffff;
   color:#c23b3b;
   border:1px solid rgba(0,0,0,.10);
+  width:100%;
 }
 
-.btnSubmit:hover{background:#fff}
+.btnSubmit:hover{ background:#fff }
 
 /* ===== Footer ===== */
 .footer{
@@ -440,21 +495,13 @@ body{
 }
 
 /* ===== Responsive ===== */
-@media (max-width:980px){
-  .heroFrame img{height:360px}
-  .programGrid{grid-template-columns:repeat(2,1fr)}
-  .aboutSplit{grid-template-columns:1fr}
+@media (max-width: 980px){
+  .heroFrame img{ height:360px; }
+  .aboutSplit{ grid-template-columns:1fr; }
 }
 
-@media (max-width:760px){
-  .contactSplit{grid-template-columns:1fr}
-  .formGrid{grid-template-columns:1fr}
-  .contactMap iframe{min-height:220px}
-}
-
-@media (max-width:560px){
-  .heroFrame img{height:280px}
-  .programGrid{grid-template-columns:1fr}
-  .brandLogo.secondary{height:70px}
-  .brandLogo:not(.secondary){height:48px}
+@media (max-width: 560px){
+  .heroFrame img{ height:280px; }
+  .brandLogo.secondary{ height:70px; }
+  .brandLogo:not(.secondary){ height:48px; }
 }
